@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="cointainer text-center col-12">
+        <div>
+            <div>
+                <form th:action="@{/logout}" method="post">
+                    <p>
+                        Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    </p>
+                    <input type="submit" value="Sign out">
+                </form>
+            </div>
+
+            <h1>List Of All Users</h1>
+        </div>
+        <div class="col-12 p-5">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>SURNAME</th>
+                    <th>PASSWORD</th>
+                    <th>EMAIL</th>
+                    <th>PHONE</th>
+                    <th>ADDRESS</th>
+                    <th>CITY</th>
+                    <th>ZIP</th>
+                    <th>GENDER</th>
+                    <th>STATUS</th>
+                    <th>DATE OF BIRTH</th>
+                    <th>CREATION DATE</th>
+                    <th>BARCODE</th>
+                    <th>USER CREATE</th>
+                </thead>
+                <tbody>
+                    <tr th:each="user: ${userList}">
+                        <td th:text="${user.id}">ID</td>
+                        <td th:text="${user.name}">NAME</td>
+                        <td th:text="${user.surname}">SURNAME</td>
+                        <td th:text="${user.password}" style="word-break: break-all;">PASSWORD</td>
+                        <td th:text="${user.email}">EMAIL</td>
+                        <td th:text="${user.mobile_phone}">PHONE</td>
+                        <td th:text="${user.address}">ADDRESS</td>
+                        <td th:text="${user.city}">CITY</td>
+                        <td th:text="${user.zip}">ZIP</td>
+                        <td th:text="${user.gender}">GENDER</td>
+                        <td th:text="${user.status}">STATUS</td>
+                        <td th:text="${user.date_birth}">DATE OF BIRTH</td>
+                        <td th:text="${user.date_created}">CREATION DATE</td>
+                        <td th:text="${user.loy_card}">BARCODE</td>
+                        <td th:text="${user.user_create}">USER CREATE</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
