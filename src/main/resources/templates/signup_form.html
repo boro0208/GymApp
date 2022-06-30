@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label class="col-form-label col-4">Mobile phone :</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" th:field="*{mobile_phone}" minlength="6" required>
+                            <input type="text" class="form-control" th:field="*{mobilePhone}" minlength="6" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -83,25 +83,25 @@
                     <div class="form-group row">
                         <label class="col-form-label col-4">Date of birth :</label>
                         <div class="col-8">
-                            <input type="date" name="date" class="form-control" th:field="*{date_birth}" required>
+                            <input type="date" name="date" class="form-control" th:field="*{dateOfBirth}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-4">Date created :</label>
                         <div class="col-8">
-                            <input type="date" name="date" class="form-control" th:field="*{date_created}" required>
+                            <input type="date" name="date" class="form-control" th:field="*{creationDate}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-4">Barcode:</label>
                         <div class="col-8">
-                            <input type="number" class="form-control" th:field="*{loy_card}" required>
+                            <input type="number" class="form-control" th:field="*{loyCard}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-form-label col-4">User create :</label>
                         <div class="col-8">
-                            <select class="form-control" th:field="*{user_create}" required>
+                            <select class="form-control" th:field="*{userCreated}" required>
                                 <option value="2">User</option>
                                 <option value="1">Administrator</option>
                             </select>

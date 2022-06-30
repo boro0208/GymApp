@@ -26,16 +26,16 @@ public class UserRepositoryTests {
         user.setSurname("Test");
         user.setPassword("12345");
         user.setEmail("test.test@gmail.com");
-        user.setMobile_phone("060/121111");
+        user.setMobilePhone("060/121111");
         user.setAddress("Test 656");
         user.setCity("Test");
         user.setZip(2234);
         user.setGender("Male");
         user.setStatus("Active");
-        user.setDate_birth("01.01.1971");
-        user.setDate_created("28.06.2022");
-        user.setLoy_card("0000000000000000001");
-        user.setUser_create(1);
+        user.setDateOfBirth("01.01.1971");
+        user.setCreationDate("28.06.2022");
+        user.setLoyCard("0000000000000000001");
+        user.setUserCreated(1);
 
         User savedUser = repository.save(user);
 

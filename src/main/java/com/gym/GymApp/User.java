@@ -16,8 +16,8 @@ public class User {
     private String password;
     @Column(nullable = false,unique = true, length = 255)
     private String email;
-    @Column(nullable = false, length = 255)
-    private String mobile_phone;
+    @Column(nullable = false, length = 255, name = "mobile_phone")
+    private String mobilePhone;
     @Column(nullable = false, length = 255)
     private String address;
     @Column(nullable = false, length = 255)
@@ -28,14 +28,14 @@ public class User {
     private String gender;
     @Column(nullable = false, length = 255)
     private String status;
-    @Column(nullable = false, length = 255)
-    private String date_birth;
-    @Column(nullable = false, length = 255)
-    private String date_created;
-    @Column(nullable = false, length = 255)
-    private String loy_card;
-    @Column(nullable = false)
-    private int user_create;
+    @Column(nullable = false, length = 255, name="date_birth")
+    private String dateOfBirth;
+    @Column(nullable = false, length = 255, name = "date_created")
+    private String creationDate;
+    @Column(nullable = false, length = 255, name = "loy_card")
+    private String loyCard;
+    @Column(nullable = false, name = "user_create")
+    private int userCreated;
 
     public Long getId() {
         return id;
@@ -61,6 +61,14 @@ public class User {
         this.surname = surname;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -69,12 +77,20 @@ public class User {
         this.email = email;
     }
 
-    public String getMobile_phone() {
-        return mobile_phone;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setMobile_phone(String mobile_phone) {
-        this.mobile_phone = mobile_phone;
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
@@ -109,51 +125,35 @@ public class User {
         this.status = status;
     }
 
-    public String getDate_birth() {
-        return date_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_birth(String date_birth) {
-        this.date_birth = date_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getDate_created() {
-        return date_created;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setDate_created(String date_created) {
-        this.date_created = date_created;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public String getLoy_card() {
-        return loy_card;
+    public String getLoyCard() {
+        return loyCard;
     }
 
-    public void setLoy_card(String loy_card) {
-        this.loy_card = loy_card;
+    public void setLoyCard(String loyCard) {
+        this.loyCard = loyCard;
     }
 
-    public int getUser_create() {
-        return user_create;
+    public int getUserCreated() {
+        return userCreated;
     }
 
-    public void setUser_create(int user_create) {
-        this.user_create = user_create;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUserCreated(int userCreated) {
+        this.userCreated = userCreated;
     }
 }
