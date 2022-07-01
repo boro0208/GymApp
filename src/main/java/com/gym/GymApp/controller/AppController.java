@@ -14,34 +14,34 @@ import java.util.List;
 @Controller
 public class AppController {
 
-	@Autowired
-	private UserRepository repository;
+    @Autowired
+    private UserRepository repository;
 
-	@GetMapping("")
-	public String viewHomePage() {
-		return "index";
-	}
+    @GetMapping("")
+    public String viewHomePage() {
+        return "index";
+    }
 
-	@GetMapping("/register")
-	public String showSignUpForm(Model model) {
-		model.addAttribute("user", new User());
+    @GetMapping("/register")
+    public String showSignUpForm(Model model) {
+        model.addAttribute("user", new User());
 
-		return "signup_form";
-	}
+        return "signup_form";
+    }
 
-	@PostMapping("/process_register")
-	public String processingRegistration(User user) {
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
-		repository.save(user);
-		return "register_success";
-	}
+    @PostMapping("/process_register")
+    public String processingRegistration(User user) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        repository.save(user);
+        return "register_success";
+    }
 
-	@GetMapping("/list_users")
-	public String viewUsersList(Model model) {
-		List<User> userList = repository.findAll();
-		model.addAttribute("userList", userList);
-		return "users";
-	}
+    @GetMapping("/list_users")
+    public String viewUsersList(Model model) {
+        List<User> userList = repository.findAll();
+        model.addAttribute("userList", userList);
+        return "users";
+    }
 }

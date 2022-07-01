@@ -19,46 +19,46 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private DataSource dataSource;
-	@Autowired
-	private UserRepository repository;
+    @Autowired
+    private DataSource dataSource;
+    @Autowired
+    private UserRepository repository;
 
-	@Bean
-	public UserDetailsService userDetailsService() {
-		return new CustomUserDetailsService(repository);
-	}
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailsService(repository);
+    }
 
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Bean
-	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-		authenticationProvider.setUserDetailsService(userDetailsService());
-		authenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService());
+        authenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
 
-		return authenticationProvider;
-	}
+        return authenticationProvider;
+    }
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authenticationProvider());
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.antMatchers("/list_users").authenticated()
-			.anyRequest().permitAll()
-			.and()
-			.formLogin()
-			.usernameParameter("email")
-			.defaultSuccessUrl("/list_users")
-			.permitAll()
-			.and()
-			.logout().logoutSuccessUrl("/").permitAll();
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers("/list_users").authenticated()
+            .anyRequest().permitAll()
+            .and()
+            .formLogin()
+            .usernameParameter("email")
+            .defaultSuccessUrl("/list_users")
+            .permitAll()
+            .and()
+            .logout().logoutSuccessUrl("/").permitAll();
+    }
 }
