@@ -1,5 +1,7 @@
-package com.gym.GymApp;
+package com.gym.GymApp.auth;
 
+import com.gym.GymApp.repository.UserRepository;
+import com.gym.GymApp.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,19 +21,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private UserRepository repository;
 
     @Bean
-    public UserDetailsService userDetailsService(){
-        return new CustomUserDetailsService();
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailsService(repository);
     }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
         authenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());

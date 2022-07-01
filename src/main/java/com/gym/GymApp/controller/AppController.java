@@ -1,5 +1,7 @@
-package com.gym.GymApp;
+package com.gym.GymApp.controller;
 
+import com.gym.GymApp.repository.UserRepository;
+import com.gym.GymApp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,19 +18,19 @@ public class AppController {
     private UserRepository repository;
 
     @GetMapping("")
-    public String viewHomePage(){
+    public String viewHomePage() {
         return "index";
     }
 
     @GetMapping("/register")
-    public String showSignUpForm(Model model){
+    public String showSignUpForm(Model model) {
         model.addAttribute("user", new User());
 
         return "signup_form";
     }
 
     @PostMapping("/process_register")
-    public String processingRegistration(User user){
+    public String processingRegistration(User user) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -37,9 +39,9 @@ public class AppController {
     }
 
     @GetMapping("/list_users")
-    public String viewUsersList(Model model){
+    public String viewUsersList(Model model) {
         List<User> userList = repository.findAll();
-        model.addAttribute("userList",userList);
+        model.addAttribute("userList", userList);
         return "users";
     }
 }

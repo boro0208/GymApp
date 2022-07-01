@@ -1,4 +1,4 @@
-package com.gym.GymApp;
+package com.gym.GymApp.model;
 
 import javax.persistence.*;
 
@@ -14,7 +14,7 @@ public class User {
     private String surname;
     @Column(nullable = false, length = 255)
     private String password;
-    @Column(nullable = false,unique = true, length = 255)
+    @Column(nullable = false, unique = true, length = 255)
     private String email;
     @Column(nullable = false, length = 255, name = "mobile_phone")
     private String mobilePhone;
@@ -28,7 +28,7 @@ public class User {
     private String gender;
     @Column(nullable = false, length = 255)
     private String status;
-    @Column(nullable = false, length = 255, name="date_birth")
+    @Column(nullable = false, length = 255, name = "date_birth")
     private String dateOfBirth;
     @Column(nullable = false, length = 255, name = "date_created")
     private String creationDate;
