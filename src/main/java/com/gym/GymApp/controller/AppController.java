@@ -16,6 +16,8 @@ public class AppController {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("")
     public String viewHomePage() {
@@ -31,7 +33,6 @@ public class AppController {
 
     @PostMapping("/process_register")
     public String processingRegistration(User user) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         repository.save(user);
