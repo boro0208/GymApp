@@ -1,6 +1,8 @@
 package com.gym.GymApp.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
@@ -36,6 +38,31 @@ public class User {
     private String loyCard;
     @Column(nullable = false, name = "user_create")
     private int userCreated;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
+
+    public User() {
+    }
+
+    public User(Long id, String name, String surname, String password, String email, String mobilePhone, String address, String city, int zip, String gender, String status, String dateOfBirth, String creationDate, String loyCard, int userCreated, Collection<Role> roles) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.mobilePhone = mobilePhone;
+        this.address = address;
+        this.city = city;
+        this.zip = zip;
+        this.gender = gender;
+        this.status = status;
+        this.dateOfBirth = dateOfBirth;
+        this.creationDate = creationDate;
+        this.loyCard = loyCard;
+        this.userCreated = userCreated;
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;
@@ -156,4 +183,13 @@ public class User {
     public void setUserCreated(int userCreated) {
         this.userCreated = userCreated;
     }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
 }
